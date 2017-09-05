@@ -12,6 +12,8 @@ export class ImagesearchComponent implements OnInit {
 
   @Input() searchWord : string = "Default";
   subscription : Subscription;
+
+  @Input() imageLinks = [];
   constructor(private searchService : SearchService) { }
 
   ngOnInit() {
@@ -33,7 +35,10 @@ export class ImagesearchComponent implements OnInit {
   handleSearchResult(data : any){
    
     var result = <ImageSearchResult>data.json();
-     console.log("incoming data in image search result is " + result.items[0].image.thumbnailLink);
+    result.items.forEach(thumbLink => {
+        this.imageLinks.push(thumbLink);
+    });
+     console.log("incoming data in image search result is " + this.imageLinks.length);
      
   }
 
