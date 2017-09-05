@@ -25,9 +25,10 @@ export class TextsearchComponent implements OnInit{
   }
   
   performSearch(keyword : string) {
+     /*
       console.log('in text search for keyword ' + keyword);
       this.searchService.performTextSearch(keyword).subscribe(data=>this.handleSearchResult(data),
-        error => this.handleError(error));
+        error => this.handleError(error));*/
   }
 
   handleSearchResult(data :any){

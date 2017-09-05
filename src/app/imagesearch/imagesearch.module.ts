@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImagesearchComponent } from './imagesearch.component';
+import {ImageSearchResult} from './imagesearch.model';
 
 @NgModule({
   imports: [
@@ -8,7 +9,7 @@ import { ImagesearchComponent } from './imagesearch.component';
   ],
   declarations: [ImagesearchComponent],
   exports: [
-    ImagesearchComponent
+    ImagesearchComponent,
   ]
 })
 export class ImagesearchModule { }
