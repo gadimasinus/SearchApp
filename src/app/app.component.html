@@ -1,7 +1,7 @@
 <nav class="navbar">
 
   <form class="form-inline my-2 my-lg-0">
-    <input name="searchText" class="form-control mr-sm-2" type="text" [(ngModel)]="searchKeyword" placeholder="Search" aria-label="Search">
+    <input name="searchText" class="form-control mr-sm-2" type="text" [(ngModel)]="searchKeyword" value={{searchKeyword}} placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" (click)="setSearch()" type="submit">Search</button>
   </form>
 

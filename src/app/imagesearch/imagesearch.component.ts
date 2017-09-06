@@ -12,6 +12,7 @@ export class ImagesearchComponent implements OnInit {
 
   @Input() searchWord : string = "Default";
   subscription : Subscription;
+  startIndex = 1;
 
   @Input() imageLinks = [];
   constructor(private searchService : SearchService) { }
@@ -28,7 +29,7 @@ export class ImagesearchComponent implements OnInit {
   performSearch(keyword :string){
     console.log('in image search for keyword ' + keyword);
     this.searchWord = keyword;
-    this.searchService.performImageSearch(keyword).subscribe(data=>this.handleSearchResult(data),
+    this.searchService.performImageSearch(keyword,this.startIndex).subscribe(data=>this.handleSearchResult(data),
     error => this.handleError(error));
   }
 
@@ -45,6 +46,12 @@ export class ImagesearchComponent implements OnInit {
   handleError(error : any){
     console.log("error getting image serach results" + error);
     
+  }
+
+  getNextSet(){
+    this.startIndex +=10;
+    console.log("start index for image search is " + this.startIndex);
+    this.performSearch(this.searchWord);
   }
 
 }

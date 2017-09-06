@@ -5,6 +5,9 @@
   imagesearch works!
   Received search word is {{searchWord}}
 </p>
+<div>
+  <button class="btn-primary"  (click)="getNextSet()" >Next</button>
+</div>  
 <ul id="thumbnailList">
  <li *ngFor="let link of imageLinks">
    <img src={{link}} class="tn" height="146" width="160"/>

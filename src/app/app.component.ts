@@ -8,7 +8,7 @@ import { SearchService } from "app/shared/search.service";
   
 })
 export class AppComponent {
-  searchKeyword : string;
+  searchKeyword : string = 'brian lara';
   title = 'Search';
 
    constructor(private searchService : SearchService) {

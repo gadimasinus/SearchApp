@@ -41,9 +41,9 @@ export class SearchService {
         
     }
 
-    performImageSearch(keyword : string) : Observable<Response> {
+    performImageSearch(keyword : string, startIndex : number) : Observable<Response> {
         let toSearch = this.imageSearchUrl + 'key=' + this.apiKey + '&cx=' + this.customSearchEngine 
-        + '&searchType=image' + '&num=10' + '&q=';
+        + '&searchType=image' + '&num=10' + '&start=' + startIndex + '&q=';
         let searchWords = keyword.split(' ').join('+');
 
         toSearch += searchWords;
