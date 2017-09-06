@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from "app/shared/search.service";
 import { Subscription } from "rxjs/Rx";
+import { TextSearchResult } from './textsearchresult.model';
 
 @Component({
   selector: 'app-textsearch',
@@ -10,6 +11,7 @@ import { Subscription } from "rxjs/Rx";
 export class TextsearchComponent implements OnInit{
 
   subscription : Subscription;
+  searchResults = [];
   constructor(private searchService : SearchService) { 
 
   }
@@ -25,17 +27,25 @@ export class TextsearchComponent implements OnInit{
   }
   
   performSearch(keyword : string) {
-     /*
+    
+      if(keyword==null || keyword.length ==0)
+      {
+        return;
+      }
       console.log('in text search for keyword ' + keyword);
       this.searchService.performTextSearch(keyword).subscribe(data=>this.handleSearchResult(data),
-        error => this.handleError(error));*/
+        error => this.handleError(error));
   }
 
-  handleSearchResult(data :any){
-     console.log("incoming data in text search result is " + JSON.stringify(data));
+  handleSearchResult(data : any){
+    this.searchResults.length = 0;
+    var result = <TextSearchResult>data.json();
+      result.items.forEach(item => {
+        this.searchResults.push(item);
+    });
+    console.log("no of incoming data in image search result is " + result);
      
   }
-
   handleError(error : any){
     console.log("error getting text serach results" + error);
     

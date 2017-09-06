@@ -33,12 +33,12 @@ export class ImagesearchComponent implements OnInit {
   }
 
   handleSearchResult(data : any){
-   
+    this.imageLinks.length =0;
     var result = <ImageSearchResult>data.json();
-    result.items.forEach(thumbLink => {
-        this.imageLinks.push(thumbLink);
+    result.items.forEach(item => {
+        this.imageLinks.push(item.image.thumbnailLink);
     });
-     console.log("incoming data in image search result is " + this.imageLinks.length);
+     console.log("no of incoming data in image search result is " + this.imageLinks.length);
      
   }
 

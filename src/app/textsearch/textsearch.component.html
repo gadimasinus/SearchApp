@@ -3,3 +3,16 @@
   willl perform text search for the keyword speccified
   textsearch works!
 </p>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>  
+  <tbody>
+    <tr *ngFor="let item of searchResults">
+      <td>
+       <a href={{item.link}} target="_blank">{{item.title}}</a>
+      </td>
+    </tr>  
+  </tbody>  
+</table>  

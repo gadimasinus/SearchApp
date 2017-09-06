@@ -24,9 +24,16 @@ export class SearchService {
     }
 
     performTextSearch(keyword : string) : Observable<Response> {
-        let searchUrl = this.textSearchUrl + keyword.split(' ').join('+');
-        console.log('complete text search url is ' + searchUrl);
-        return this._http.get(searchUrl).map((response : Response)=>{
+         let toSearch = this.imageSearchUrl + 'key=' + this.apiKey + '&cx=' + this.customSearchEngine 
+        + '&num=10' + '&q=';
+        let searchWords = keyword.split(' ').join('+');
+
+        toSearch += searchWords;
+
+        toSearch += "&alt=json"
+
+        console.log('complete url for image search is ' + toSearch);
+        return this._http.get(toSearch).map((response : Response)=>{
             console.log('response is ' + response);
             
             return response;
