@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+///<reference path="js/jquery.d.ts"/>
 
 @Component({
 
@@ -35,4 +36,14 @@ export class DisplayImageComponent implements OnInit {
       }
   
     }
+
+    uploadFile(){
+        var blobFile = $('fileElement').files[0];
+        var formData = new FormData();
+        
+
+
+    }
+
+
 }
