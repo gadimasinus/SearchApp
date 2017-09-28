@@ -9,12 +9,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <app-imagesearch></app-imagesearch>
+   <div class="col-sm-4">
+      <app-displayimg></app-displayimg>
     </div>
-    <div class="col-md-6">
+    <div class="col-sm-4">
+      <app-imagesearch [searchWord]='searchKeyword' (nextDone) ='notificationFromChild($event)' ></app-imagesearch>
+    </div>
+    <div class="col-sm-4">
       <app-textsearch></app-textsearch>
     </div>
+   
   </div>
 </div>
 <footer>

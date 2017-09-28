@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { SearchService } from "app/shared/search.service";
+//import {ImagesearchComponent} from "app/imagesearch/imagesearch.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  
 })
 export class AppComponent {
   searchKeyword : string = 'brian lara';
@@ -26,5 +26,10 @@ export class AppComponent {
 
     //console.log("search words are " + this.searchKeyword);
     
+  }
+  notificationFromChild(data){
+    console.log('received notification from child');
+    
+    alert(data);
   }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { Observable, Observer, BehaviorSubject } from 'rxjs';
+import { Observable, Observer, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { EventEmitter } from "events";
 import {Http,Response} from '@angular/http';
 
@@ -8,7 +8,7 @@ import {Http,Response} from '@angular/http';
 export class SearchService {
 
     private textSearchUrl = "https://www.google.com/search?q="
-    searchKeywordSource = new BehaviorSubject<string>('brian lara');
+    searchKeywordSource = new ReplaySubject<string>();
     public searchKeywordObserverable = this.searchKeywordSource.asObservable();
 
     apiKey = 'AIzaSyAwcCNQwcJOm_gF1HgsCHrxZctgyRNcoHc';

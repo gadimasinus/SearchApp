@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
 import { SearchService } from "app/shared/search.service";
 import {Subscription} from 'rxjs';
 import {ImageSearchResult} from './imagesearchresult.model';
@@ -10,15 +10,19 @@ import {ImageSearchResult} from './imagesearchresult.model';
 })
 export class ImagesearchComponent implements OnInit {
 
-  @Input() searchWord : string = "Default";
+  @Input() searchWord : string;
   subscription : Subscription;
   startIndex = 1;
+  
+  @Output() nextDone : EventEmitter<string> = new EventEmitter<string>();
 
   @Input() imageLinks = [];
   constructor(private searchService : SearchService) { }
 
   ngOnInit() {
-    this.subscription = this.searchService.searchKeywordObserverable.subscribe(data=>this.performSearch(data));
+  //  this.subscription = this.searchService.searchKeywordObserverable.subscribe(data=>this.performSearch(data));
+    console.log("search word in image search is " + this.searchWord);
+    
   }
 
  ngOnDestroy(){
@@ -52,6 +56,8 @@ export class ImagesearchComponent implements OnInit {
     this.startIndex +=10;
     console.log("start index for image search is " + this.startIndex);
     this.performSearch(this.searchWord);
+    this.nextDone.emit('Next clicked');
+
   }
 
 }
